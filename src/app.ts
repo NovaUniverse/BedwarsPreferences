@@ -4,11 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 
 require('console-stamp')(console, '[HH:MM:ss.l]');
 
-if (!FS.existsSync("./config")) {
-	FS.mkdirSync("./config");
+if (!FS.existsSync("./data")) {
+	FS.mkdirSync("./data");
 }
 
-if (!FS.existsSync("./config/config.json")) {
+if (!FS.existsSync("./data/config.json")) {
     console.log("Creating default configuration");
 	let key = uuidv4();
 	console.log("First run detcted. Your API key is: " + key);
@@ -16,11 +16,11 @@ if (!FS.existsSync("./config/config.json")) {
 		port: 80,
 		api_key: key
 	}
-	FS.writeFileSync("./config/config.json", JSON.stringify(defaultConfig, null, 4), 'utf8');
+	FS.writeFileSync("./data/config.json", JSON.stringify(defaultConfig, null, 4), 'utf8');
 } else {
-	console.log("API key can be found in ./config/config.json");
+	console.log("API key can be found in ./data/config.json");
 }
 
-const config: any = JSON.parse(FS.readFileSync("./config/config.json", 'utf8'));
+const config: any = JSON.parse(FS.readFileSync("./data/config.json", 'utf8'));
 
-new BedwarsPreferenceServer(config.port, config.api_key);
+new BedwarsPreferenceServer(config.port, config.api_key, "./data/data.db");
