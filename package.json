@@ -4,6 +4,7 @@
   "description": "A server to store the shop preferences for players",
   "main": "./dist/app.js",
   "scripts": {
+    "build": "tsc --build",
     "start": "node ./dist/app.js",
     "test": "nodemon --ignore ./data/ ./dist/app.js"
   },
