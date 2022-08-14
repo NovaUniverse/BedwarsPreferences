@@ -71,9 +71,16 @@ export default class BedwarsPreferenceServer {
 				return;
 			}
 
+			const data = req.body;
+
+			if(!Array.isArray(data)) {
+				res.status(400).send("400: Data is not an array");
+				return;
+			}
+
 			const newObject = {
 				uuid: uuid,
-				data: req.body
+				data: data
 			}
 
 			let entry = this.db.getCollection(BedwarsPreferenceServer.PLAYER_DATA_DB).findOne({uuid: uuid});
