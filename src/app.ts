@@ -1,5 +1,5 @@
 import * as FS from "fs";
-import BedwarsPreferenceServer from "./BedwarePreferneceServer";
+import BedwarsPreferenceServer from "./BedwarsPreferenceServer";
 import { v4 as uuidv4 } from 'uuid';
 
 require('console-stamp')(console, '[HH:MM:ss.l]');
